@@ -29,7 +29,7 @@ public class Cuenta {
         if (Cantidad < 0) {
             this.Cantidad = 0;
         } else {
-            this.Cantidad = Cantidad;
+            this.SetCant( Cantidad);
         }
     }
     // METODOS
@@ -84,9 +84,10 @@ public class Cuenta {
     }
     //Retiro o egreso Cantidad a la cuenta 
     public void Retiro(double Cant) {
-        Double TotalCuenta = this.Cantidad + Cant;
+                            // 20 - -50 = 
+        Double TotalCuenta = this.Cantidad - Cant  ;
         if (TotalCuenta > 0) {
-            this.SetCant(TotalCuenta);
+            this.SetCant(this.Cantidad - Cant);
         } else {
             this.SetCant(0.00);
             this.Cantidad = 0.00;
