@@ -6,18 +6,10 @@ package tallercuentas;
 
 /**
  *
- * @author alejandrosanchez
+ * @author Alejandro Sanchez
+ *         Yalith Torres
  */
-public class TallerCuentas {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
-}
 /*
 Se desea crear una clase llamada CUENTA que tendra los siguentes attr: 
     * Titular (REQUIRED)
@@ -33,3 +25,14 @@ Tendra dos metodos ESPECIALES:
         - Se retira una cantidad a la cuenta, si restando la cantida actual a la que nos 
         pasan es negativa, la cantidad de la cuenta pasa a ser 0.
 */
+
+public class TallerCuentas {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+    }
+    
+}
