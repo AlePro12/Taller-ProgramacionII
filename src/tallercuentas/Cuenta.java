@@ -19,7 +19,19 @@ public class Cuenta {
     private boolean CantidadSet = false;
     Utils u = new Utils();
     // CONSTRUCTORES
-
+    public Cuenta(String Titular) {
+        this(Titular, 0); 
+    }
+ 
+    public Cuenta(String Titular, double Cantidad) {
+        this.Titular = Titular;
+        //Cantidad es menor a 0, se coloca 0
+        if (Cantidad < 0) {
+            this.Cantidad = 0;
+        } else {
+            this.Cantidad = Cantidad;
+        }
+    }
     // METODOS
     //Data GET
     //Obtener Titular
