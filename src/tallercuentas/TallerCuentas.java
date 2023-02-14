@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package tallercuentas;
-
+import tallercuentas.Cuenta;
+import tallercuentas.Utils;
 /**
  *
  * @author Alejandro Sanchez
@@ -32,7 +33,25 @@ public class TallerCuentas {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        // En la clase hay utilidades como print para printear en consola
+        Utils u = new Utils();
+        //Esta funcion hace un header 
+        u.HeaderBonito("Taller");
+        //Instancio una cuenta nueva
+        Cuenta acc = new Cuenta();
+        //Obtengo por consola datos
+        String Titular = u.ObtenerInputUsuario_string("Titular");
+        double Cantidad = u.ObtenerInputUsuario_double_novalid("Cantidad");
+        acc.SetTitular(Titular);
+        acc.SetCantidad(Cantidad);
+        // u.Line dibuja una linea separadora en consola PD: es como un <hr>
+        u.Line();
+        // Printeo el titular por consola
+        u.print("Titular: "+ acc.GetTitular());
+        u.print("Cantidad: "+ acc.GetCantidad_String());
+        
+        
     }
     
 }

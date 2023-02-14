@@ -9,57 +9,75 @@ import java.io.IOException;
 
 /**
  *
- * @author Alejandro Sanchez
- *         Yalith Torres
+ * @author Alejandro Sanchez Yalith Torres
  */
 public class Cuenta {
-    String Titular;
-    Double Cantidad;
+    // Privado por que solo se debe acceder a esta clase, no es protected tampoco por que 
+    // Por ahora no esta planeado que estas variables lleguen a unas subclases
+    private String Titular;
+    private double Cantidad;
+    private boolean CantidadSet = false;
     Utils u = new Utils();
     // CONSTRUCTORES
-    
+
     // METODOS
     //Data GET
-    public String GetTitular(){
+    //Obtener Titular
+    public String GetTitular() {
         return Titular;
     }
-    public Double GetCantidad(){
+    // Obtener Cantidad 
+    public double GetCantidad() {
         return Cantidad;
     }
-    public String GetCantidadString(){
-        return Cantidad.toString();
+    // Obtiene la cantidad en string
+    public String GetCantidad_String() {
+        return String.valueOf(Cantidad);
     }
+
     //Data Set
-    public void SetTitular(String t ){
-        this.Titular = t;
+    // Set Titular
+    public void SetTitular(String t) {
+        if (t != "") {
+            this.Titular = t;
+        } else {
+            throw new ArithmeticException("Error - El titular es requerido");
+        };
     }
-    public void SetCantidad(Double c){
+    // Set Cantidad
+    public void SetCantidad(double c) {
         //segun yo la cantidad no se puede modificar si esta ya definida 
         // si se necesita modificar se utiliza el metodo RETIRAR
-        if(this.Cantidad == null){
+        if (CantidadSet == false) {
             this.SetCant(c);
-        }else{
+        } else {
             throw new ArithmeticException("Error - No se puede editar la cantidad use el metodo RETIRAR");
         }
     }
-    private void SetCant(Double c){
+    //Set Cantidad Privada solo se llama desde la misma clase
+    private void SetCant(double c) {
         //uso interno 
         this.Cantidad = c;
+        this.CantidadSet = true;
     }
+
     // Operaciones
-    public void Ingreso(Double Cant){
-        if(Cant > 0 ){
-            this.Cantidad += Cant;
-        }else{
+    // Ingreso Cantidad a la Cuenta
+    public void Ingreso(double Cant) {
+        if (Cant > 0) {
+            this.SetCant(this.Cantidad + Cant);
+        } else {
             u.print("Warning - Cantidad Negativa no se hizo efecto");
         }
     }
-    public void Retiro(Double Cant){
-        Double TotalCuenta = this.Cantidad+ Cant;
-        if (TotalCuenta > 0){
-            this.Cantidad = TotalCuenta;
-        }else{
-            this.Cantidad= 0.00;
+    //Retiro o egreso Cantidad a la cuenta 
+    public void Retiro(double Cant) {
+        Double TotalCuenta = this.Cantidad + Cant;
+        if (TotalCuenta > 0) {
+            this.SetCant(TotalCuenta);
+        } else {
+            this.SetCant(0.00);
+            this.Cantidad = 0.00;
         }
     }
 }

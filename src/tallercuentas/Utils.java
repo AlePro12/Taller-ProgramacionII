@@ -31,7 +31,7 @@ public class Utils {
         String input = scan.next();
         return input;
     }
-
+    
     public float ObtenerInputUsuario_float(String title) {
         float input;
         Boolean Valid = false;
@@ -56,6 +56,12 @@ public class Utils {
             return ObtenerInputUsuario_float(title);
         }
         return 0;
+    }
+public double ObtenerInputUsuario_double_novalid(String title) {
+        double input;
+        print(" Ingrese " + title + ":");
+        input = scan.nextDouble();
+        return input;
     }
 
     public  int ObtenerInputUsuario_int(String title) {
